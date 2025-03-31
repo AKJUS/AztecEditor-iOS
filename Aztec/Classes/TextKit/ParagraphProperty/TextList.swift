@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 fileprivate let DefaultUnorderedListMarkerText = "\u{2022}"
+fileprivate let romanMarker = NSTextList(markerFormat: .lowercaseRoman, options: 0)
 
 // MARK: - Text List
 //
@@ -30,7 +31,7 @@ open class TextList: ParagraphProperty {
                     return "\(text)."
                 default:
                     // marker for all levels > 2
-                    let text = getRomanNumeral(for: number)
+                    let text = romanMarker.marker(forItemNumber: number)
                     return "\(text)."
                 }
             case .unordered:
@@ -145,36 +146,5 @@ fileprivate func getLetter(for number: Int) -> String {
         return convert(quotient) + String(listChars[listChars.index(listChars.startIndex, offsetBy: remainder)])
     }
         
-    return convert(number)
-}
-
-/// Returns the roman numeral to use as the ordered list marker text
-fileprivate func getRomanNumeral(for number: Int) -> String {
-    let romanValues = [
-        1000: "m", 900: "cm", 500: "d", 400: "cd",
-        100: "c", 90: "xc", 50: "l", 40: "xl",
-        10: "x", 9: "ix", 5: "v", 4: "iv", 1: "i"
-    ]
-        
-    // used for recursion
-    func convert(_ value: Int) -> String {
-        guard value > 0 else {
-            return ""
-        }
-        
-        if let numeral = romanValues[value] {
-            return numeral
-        }
-        
-        for (key, numeral) in romanValues.sorted(by: { $0.key > $1.key }) {
-            if value >= key {
-                // recursive
-                return numeral + convert(value - key)
-            }
-        }
-        
-        return ""
-    }
-    
     return convert(number)
 }
