@@ -146,5 +146,5 @@ fileprivate func getLetter(for number: Int) -> String {
         return convert(quotient) + String(listChars[listChars.index(listChars.startIndex, offsetBy: remainder)])
     }
         
-    return convert(number)
+    return convert(abs(number))
 }
