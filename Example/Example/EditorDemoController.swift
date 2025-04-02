@@ -174,7 +174,7 @@ class EditorDemoController: UIViewController {
         view.addSubview(separatorView)
 
         editorView.richTextView.textContainer.lineFragmentPadding = 0
-        editorView.richTextView.listIndentStyle = .standard
+        editorView.richTextView.listIndentStyle = .varied
         // color setup
         if #available(iOS 13.0, *) {
             view.backgroundColor = UIColor.systemBackground

@@ -57,8 +57,8 @@ open class TextList: ParagraphProperty {
     public enum IndentStyle: Int {
         /// A default single bullet style for each indentation level
         case `default`
-        /// The standard bullet styles for each indentation level (i.e., HTML style)
-        case standard
+        /// Use a varied (distinct) bullet style for each indentation level (i.e., WYSIWYG style)
+        case varied
     }
 
     public let reversed: Bool

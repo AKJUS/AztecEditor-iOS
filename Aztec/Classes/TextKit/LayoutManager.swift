@@ -240,7 +240,7 @@ private extension LayoutManager {
 
             var indentLevel: Int?
             // Determine indentation level, if needed. The indentation level is only determined for the standard list style
-            if listIndentStyle == .standard {
+            if listIndentStyle == .varied {
                 // only get the width of the first level once
                 if firstLevelWidth == nil {
                     firstLevelWidth = paragraphStyle.indentToFirst(TextList.self)
