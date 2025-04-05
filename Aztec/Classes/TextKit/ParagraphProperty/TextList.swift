@@ -1,6 +1,8 @@
 import Foundation
 import UIKit
 
+fileprivate let DefaultUnorderedListMarkerText = "\u{2022}"
+fileprivate let romanMarker = NSTextList(markerFormat: .lowercaseRoman, options: 0)
 
 // MARK: - Text List
 //
@@ -14,12 +16,49 @@ open class TextList: ParagraphProperty {
         case ordered
         case unordered
 
-        func markerText(forItemNumber number: Int) -> String {
+        func markerText(forItemNumber number: Int, indentLevel: Int? = nil) -> String {
             switch self {
-            case .ordered:      return "\(number)."
-            case .unordered:    return "\u{2022}"
+            case .ordered:
+                if indentLevel == nil {
+                    return "\(number)."
+                }
+                
+                switch indentLevel {
+                case 1:
+                    return "\(number)."
+                case 2:
+                    let text = getLetter(for: number)
+                    return "\(text)."
+                default:
+                    // marker for all levels > 2
+                    let text = romanMarker.marker(forItemNumber: number)
+                    return "\(text)."
+                }
+            case .unordered:
+                if indentLevel == nil {
+                    return DefaultUnorderedListMarkerText
+                }
+                
+                switch indentLevel {
+                case 1:
+                    return DefaultUnorderedListMarkerText
+                case 2:
+                    return "\u{2E30}"
+                default:
+                    // marker for all levels > 2
+                    return "\u{2B29}"
+                }
             }
         }
+    }
+
+    /// List Indent Styles
+    ///
+    public enum IndentStyle: Int {
+        /// A default single bullet style for each indentation level
+        case `default`
+        /// Use a varied (distinct) bullet style for each indentation level (i.e., WYSIWYG style)
+        case varied
     }
 
     public let reversed: Bool
@@ -89,4 +128,23 @@ open class TextList: ParagraphProperty {
     public static func ==(lhs: TextList, rhs: TextList) -> Bool {
         return lhs.style == rhs.style && lhs.start == rhs.start && lhs.reversed == rhs.reversed
     }
+}
+
+/// Returns the letters to use as the ordered list marker text
+fileprivate func getLetter(for number: Int) -> String {
+    let listChars = "abcdefghijklmnopqrstuvwxyz"
+    let charCount = listChars.count
+    
+    // for recursion
+    func convert(_ value: Int) -> String {
+        if value <= charCount {
+            return String(listChars[listChars.index(listChars.startIndex, offsetBy: value - 1)])
+        }
+        
+        let quotient = (value - 1) / charCount
+        let remainder = (value - 1) % charCount
+        return convert(quotient) + String(listChars[listChars.index(listChars.startIndex, offsetBy: remainder)])
+    }
+        
+    return convert(abs(number))
 }

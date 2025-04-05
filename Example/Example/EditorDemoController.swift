@@ -174,6 +174,7 @@ class EditorDemoController: UIViewController {
         view.addSubview(separatorView)
 
         editorView.richTextView.textContainer.lineFragmentPadding = 0
+        editorView.richTextView.listIndentStyle = .varied
         // color setup
         if #available(iOS 13.0, *) {
             view.backgroundColor = UIColor.systemBackground
@@ -257,7 +258,7 @@ class EditorDemoController: UIViewController {
         rightMargin -= view.safeAreaInsets.right
 
         scrollInsets.right = -rightMargin
-        editorView.scrollIndicatorInsets = scrollInsets
+        editorView.horizontalScrollIndicatorInsets = scrollInsets
     }
 
     func updateTitleHeight() {
