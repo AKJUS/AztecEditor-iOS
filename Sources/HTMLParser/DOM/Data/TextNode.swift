@@ -5,7 +5,7 @@ import Foundation
 ///
 public class TextNode: Node {
 
-    let contents: String
+    public let contents: String
 
     var shouldCollapseSpaces: Bool = true
 
@@ -35,7 +35,7 @@ public class TextNode: Node {
 
     /// Checks if the specified node requires a closing paragraph separator.
     ///
-    override func needsClosingParagraphSeparator() -> Bool {
+    public override func needsClosingParagraphSeparator() -> Bool {
         guard length() > 0 else {
             return false
         }
@@ -74,7 +74,7 @@ public class TextNode: Node {
 
 extension TextNode {
     
-    func sanitizedText() -> String {
+    public func sanitizedText() -> String {
         guard shouldSanitizeText() else {
             return text()
         }

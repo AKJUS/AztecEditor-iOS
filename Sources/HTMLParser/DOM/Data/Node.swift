@@ -55,7 +55,7 @@ public class Node: Equatable, CustomReflectable, Hashable {
     
     /// Checks if the specified node requires a closing paragraph separator.
     ///
-    func needsClosingParagraphSeparator() -> Bool {
+    public func needsClosingParagraphSeparator() -> Bool {
         guard !hasRightBlockLevelSibling() else {
             return true
         }

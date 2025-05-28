@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 /// This enum provides a list of HTML5 standard element names.  The reason why this isn't
 /// used as the `name` property of `ElementNode` is that element nodes could theoretically
@@ -55,7 +54,7 @@ public struct Element: RawRepresentable, Hashable {
     }
 }
 
-extension Element {
+public extension Element {
     static let aztecRootNode = Element("aztec.htmltag.rootnode")
 }
 
@@ -130,7 +129,7 @@ extension Element {
         return Element(name).isBlockLevel()
     }
 
-    var equivalentNames: [Element] {
+    public var equivalentNames: [Element] {
         switch self {
         case .h1: return [self]
         case .strong: return [self, Element.b]

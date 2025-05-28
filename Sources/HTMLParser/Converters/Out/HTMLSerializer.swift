@@ -1,7 +1,7 @@
 import Foundation
 import libxml2
 
-protocol HTMLSerializerCustomizer {
+public protocol HTMLSerializerCustomizer {
     func converter(for element: ElementNode) -> ElementToTagConverter?
 }
 
@@ -23,12 +23,7 @@ public class HTMLSerializer {
     /// - Parameters:
     ///     - indentationSpaces: Indicates the number of indentation spaces to be applied, per level.
     ///
-    public init(indentationSpaces: Int = 2) {
-        self.customizer = nil
-        self.indentationSpaces = indentationSpaces
-    }
-    
-    init(indentationSpaces: Int = 2, customizer: HTMLSerializerCustomizer? = nil) {
+    public init(indentationSpaces: Int = 2, customizer: HTMLSerializerCustomizer? = nil) {
         self.customizer = customizer
         self.indentationSpaces = indentationSpaces
     }

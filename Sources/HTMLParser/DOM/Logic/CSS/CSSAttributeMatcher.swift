@@ -5,6 +5,9 @@ public protocol CSSAttributeMatcher {
 }
 
 open class NeverCSSAttributeMatcher: CSSAttributeMatcher {
+
+    public init() {}
+
     public func check(_ cssAttribute: CSSAttribute) -> Bool {
         return false
     }

@@ -8,7 +8,7 @@ open class HTMLParser {
         case NoRootNode = "No root node"
     }
 
-    var shouldCollapseSpaces: Bool = true
+    public var shouldCollapseSpaces: Bool = true
 
     /// Public initializer
     ///

@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 
 /// Element node.  Everything but text basically.
@@ -15,7 +14,7 @@ public class ElementNode: Node {
 
     private static let headerLevels: [Element] = [.h1, .h2, .h3, .h4, .h5, .h6]
 
-    class func elementTypeForHeaderLevel(_ headerLevel: Int) -> Element? {
+    public class func elementTypeForHeaderLevel(_ headerLevel: Int) -> Element? {
         if headerLevel < 1 || headerLevel > headerLevels.count {
             return nil
         }
@@ -126,7 +125,7 @@ public class ElementNode: Node {
     
     // MARK: - Node Overrides
     
-    override func needsClosingParagraphSeparator() -> Bool {
+    public override func needsClosingParagraphSeparator() -> Bool {
         return (!hasChildren())
             && (canBeLastInTree() || !isLastInTree())
             && (isBlockLevel() || hasRightBlockLevelSibling() || isLastInAncestorEndingInBlockLevelSeparation())
@@ -137,7 +136,7 @@ public class ElementNode: Node {
     /// - Returns: true if the element needs an explicit representation (to avoid losing attributes),
     ///     and if it either has a block level element to the right or is the last element in a block level separation.
     ///
-    func needsClosingParagraphSeparatorIncludingDescendants() -> Bool {
+    public func needsClosingParagraphSeparatorIncludingDescendants() -> Bool {
         return (hasAttributes() || !isLastInTree())
             && (hasRightBlockLevelSibling() || isLastInAncestorEndingInBlockLevelSeparation())
     }
@@ -160,7 +159,7 @@ public class ElementNode: Node {
         return attributes.count > 0
     }
 
-    func stringValueForAttribute(named attributeName: String) -> String? {
+    public func stringValueForAttribute(named attributeName: String) -> String? {
 
         for attribute in attributes {
             if attribute.name == attributeName {
@@ -177,7 +176,7 @@ public class ElementNode: Node {
     ///     - attributeName: the name of the attribute
     ///     - value: the value for the attribute
     ///
-    func updateAttribute(named targetAttributeName: String, value: Attribute.Value) {
+    public func updateAttribute(named targetAttributeName: String, value: Attribute.Value) {
 
         for attribute in attributes {
             if attribute.name == targetAttributeName {
@@ -191,7 +190,7 @@ public class ElementNode: Node {
         attributes.append(attribute)
     }
     
-    func updateAttribute(ofType type: AttributeType, value: Attribute.Value) {
+    public func updateAttribute(ofType type: AttributeType, value: Attribute.Value) {
         updateAttribute(named: type.rawValue, value: value)
     }
     

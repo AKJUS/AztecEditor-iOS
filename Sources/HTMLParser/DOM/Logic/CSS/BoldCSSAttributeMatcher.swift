@@ -1,7 +1,9 @@
 import Foundation
 
 open class BoldCSSAttributeMatcher: CSSAttributeMatcher {
-    
+
+    public init() {}
+
     public func check(_ cssAttribute: CSSAttribute) -> Bool {
         guard let value = cssAttribute.value,
             cssAttribute.type == .fontWeight else {

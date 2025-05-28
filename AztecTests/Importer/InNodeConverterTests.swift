@@ -1,6 +1,6 @@
 import XCTest
-@testable import Aztec
 import libxml2
+@testable import HTMLParser
 
 // MARK: - InNodeConverterTests
 //

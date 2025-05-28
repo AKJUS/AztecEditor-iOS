@@ -11,7 +11,7 @@ public class CSSAttribute: Codable {
 
     /// Attribute Value, if any!
     ///
-    let value: String?
+    public let value: String?
     
     /// The attribute type, if it matches an existing one.
     ///
@@ -29,14 +29,14 @@ public class CSSAttribute: Codable {
         return CSSAttribute(type: .fontStyle, value: FontStyle.italic.rawValue)
     }()
     
-    static let underline: CSSAttribute = {
+    public static let underline: CSSAttribute = {
        return CSSAttribute(type: .textDecoration, value: TextDecoration.underline.rawValue)
     }()
 
 
     // MARK: - Initializers
 
-    init(name: String, value: String? = nil) {
+    public init(name: String, value: String? = nil) {
         self.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         self.value = value?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
@@ -45,7 +45,7 @@ public class CSSAttribute: Codable {
         self.init(name: type.rawValue, value: value)
     }
 
-    convenience init?(for string: String) {
+    public convenience init?(for string: String) {
         let components = string.components(separatedBy: CSSParser.keyValueSeparator)
         guard let name = components.first, let value = components.last, components.count == 2 else {
             return nil
@@ -56,7 +56,7 @@ public class CSSAttribute: Codable {
 
     // MARK: - Public Methods
 
-    func toString() -> String {
+    public func toString() -> String {
         guard let value = value else {
             return name
         }

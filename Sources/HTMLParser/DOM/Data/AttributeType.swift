@@ -29,13 +29,13 @@ public struct AttributeType: RawRepresentable, Hashable {
 }
 
 
-extension AttributeType {
-    public static let `class` = AttributeType("class")
-    public static let href = AttributeType("href")
-    public static let rel = AttributeType("rel")
-    public static let src = AttributeType("src")
-    public static let style = AttributeType("style")
-    public static let target = AttributeType("target")
-    public static let reversed = AttributeType("reversed")
-    public static let start = AttributeType("start")
+public extension AttributeType {
+    static let `class` = AttributeType("class")
+    static let href = AttributeType("href")
+    static let rel = AttributeType("rel")
+    static let src = AttributeType("src")
+    static let style = AttributeType("style")
+    static let target = AttributeType("target")
+    static let reversed = AttributeType("reversed")
+    static let start = AttributeType("start")
 }

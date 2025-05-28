@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 public extension Character {
 
@@ -15,7 +14,7 @@ public extension Character {
         case zeroWidthSpace = "\u{200B}"
         
         // Aliases
-        static let textAttachment = objectReplacement
+        public static let textAttachment = objectReplacement
     }
     
     static let paragraphBreakingCharacters: [Name] = [.lineFeed, .carriageReturn, .paragraphSeparator]

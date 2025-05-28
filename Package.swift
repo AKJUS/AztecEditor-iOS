@@ -8,6 +8,7 @@ let package = Package(
     platforms: [.iOS(.v11)],
     products: [
         .library(name: "Aztec", targets: ["Aztec"]),
+        .library(name: "HTMLParser", targets: ["HTMLParser"]),
         .library(name: "WordPressEditor", targets: ["WordPressEditor"]),
     ],
     dependencies: [
@@ -16,6 +17,7 @@ let package = Package(
         .target(
             name: "Aztec",
             dependencies: [
+                "HTMLParser"
             ],
             path: "Aztec",
             resources: [
@@ -29,6 +31,9 @@ let package = Package(
             resources: [
                 .process("Resources"),
             ]
+        ),
+        .target(
+            name: "HTMLParser",
         ),
         .target(
             name: "WordPressEditor",
