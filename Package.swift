@@ -35,6 +35,10 @@ let package = Package(
         .target(
             name: "HTMLParser",
         ),
+        .testTarget(
+            name: "HTMLParserTests",
+            dependencies: ["HTMLParser"]
+        ),
         .target(
             name: "WordPressEditor",
             dependencies: [

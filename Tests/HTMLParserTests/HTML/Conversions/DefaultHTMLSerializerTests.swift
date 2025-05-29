@@ -1,5 +1,5 @@
 import XCTest
-@testable import Aztec
+@testable import HTMLParser
 
 class DefaultHTMLSerializerTests: XCTestCase {
 
