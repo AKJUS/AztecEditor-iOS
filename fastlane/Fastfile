@@ -2,7 +2,7 @@
 
 default_platform(:ios)
 
-TEST_RUNTIME = 'iOS 18.4'
+TEST_RUNTIME = 'iOS 18.2'
 TEST_DEVICE = 'iPhone 16 Pro'
 
 platform :ios do
@@ -11,18 +11,17 @@ platform :ios do
     # Don't waste time managing Simulators in CI
     device = create_simulator(TEST_RUNTIME, TEST_DEVICE) unless is_ci
 
-    shared_options = {
-      # Using `package_path: .` results in a crash,
+    run_tests(
+      # Using `package_path: .` results in a crash
       workspace: './.swiftpm/xcode/package.xcworkspace',
+      # Notice this scheme is in the .swiftpm folder and it's configured to run the tests for all targets
+      scheme: 'Aztec',
       prelaunch_simulator: true,
       buildlog_path: File.join(__dir__, '.build', 'logs'),
       derived_data_path: File.join(__dir__, '.build', 'derived-data'),
       device: TEST_DEVICE,
       ensure_devices_found: true
-    }
-
-    run_tests(**shared_options, scheme: 'Aztec')
-    # run_tests(**shared_options, scheme: 'WordPressEditor')
+    )
 
     destroy_simulator(device) unless is_ci
   end
