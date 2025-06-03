@@ -1,6 +1,8 @@
 import XCTest
 @testable import Aztec
+#if SWIFT_PACKAGE
 @testable import HTMLParser
+#endif
 
 class AttributedStringSerializerTests: XCTestCase {
 

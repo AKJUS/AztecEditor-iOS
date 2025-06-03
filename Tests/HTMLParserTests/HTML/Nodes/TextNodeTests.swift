@@ -1,5 +1,9 @@
 import XCTest
+#if SWIFT_PACKAGE
 @testable import HTMLParser
+#else
+@testable import Aztec
+#endif
 
 
 // MARK: - TextNodeTests

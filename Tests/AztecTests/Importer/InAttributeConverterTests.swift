@@ -1,6 +1,10 @@
 import XCTest
 import libxml2
+#if SWIFT_PACKAGE
 @testable import HTMLParser
+#else
+@testable import Aztec
+#endif
 
 class InAttributesConverterTests: XCTestCase {
 

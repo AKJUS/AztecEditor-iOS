@@ -33,4 +33,20 @@ Pod::Spec.new do |s|
     'OTHER_LDFLAGS' => '-lxml2',
     'HEADER_SEARCH_PATHS' => '/usr/include/libxml2'
   }
+
+  s.test_spec 'Tests' do |test_spec|
+    test_spec.source_files = [
+      'Tests/AztecTests/**/*.{h,m,swift}',
+      'Tests/HTMLParserTests/**/*.{h,m,swift}'
+    ]
+    test_spec.resources = [
+      'Tests/AztecTests/Resources/**/*.{dat,png,jpg,jpeg,json,xctestplan,html}',
+      'Tests/HTMLParserTests/Resources/**/*.{dat,png,jpg,jpeg,json,xctestplan,html}'
+    ]
+    test_spec.preserve_paths = [
+      'Tests/AztecTests/**/*.xctestplan',
+      'Tests/HTMLParserTests/**/*.xctestplan'
+    ]
+    test_spec.frameworks = 'XCTest'
+  end
 end
