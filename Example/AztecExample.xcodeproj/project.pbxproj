@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F37D8E32DEE8C9900D8BF2B /* Aztec in Frameworks */ = {isa = PBXBuildFile; productRef = 3F37D8E22DEE8C9900D8BF2B /* Aztec */; };
-		3F37D8E52DEE8C9900D8BF2B /* WordPressEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 3F37D8E42DEE8C9900D8BF2B /* WordPressEditor */; };
+		3F367E522DEFA98E00976E47 /* Aztec in Frameworks */ = {isa = PBXBuildFile; productRef = 3F367E512DEFA98E00976E47 /* Aztec */; };
+		3F367E542DEFA98E00976E47 /* WordPressEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 3F367E532DEFA98E00976E47 /* WordPressEditor */; };
+		3F7C5ECB2DEEFB5F000951AA /* Aztec in Frameworks */ = {isa = PBXBuildFile; productRef = 3F7C5ECA2DEEFB5F000951AA /* Aztec */; };
+		3F7C5ECD2DEEFB5F000951AA /* WordPressEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 3F7C5ECC2DEEFB5F000951AA /* WordPressEditor */; };
 		59280F2A1D47CAF40083FB59 /* content.html in Resources */ = {isa = PBXBuildFile; fileRef = 59280F281D47CAF40083FB59 /* content.html */; };
 		59280F2B1D47CAF40083FB59 /* SampleText.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 59280F291D47CAF40083FB59 /* SampleText.rtf */; };
 		599F25701D8BCF57002871D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599F256F1D8BCF57002871D6 /* AppDelegate.swift */; };
@@ -125,8 +127,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F37D8E32DEE8C9900D8BF2B /* Aztec in Frameworks */,
-				3F37D8E52DEE8C9900D8BF2B /* WordPressEditor in Frameworks */,
+				3F367E522DEFA98E00976E47 /* Aztec in Frameworks */,
+				3F7C5ECB2DEEFB5F000951AA /* Aztec in Frameworks */,
+				3F7C5ECD2DEEFB5F000951AA /* WordPressEditor in Frameworks */,
+				3F367E542DEFA98E00976E47 /* WordPressEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +321,7 @@
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
+				3F367E502DEFA98E00976E47 /* XCLocalSwiftPackageReference "../../AztecEditor-iOS" */,
 			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
@@ -870,12 +875,27 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		3F367E502DEFA98E00976E47 /* XCLocalSwiftPackageReference "../../AztecEditor-iOS" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../AztecEditor-iOS";
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		3F37D8E22DEE8C9900D8BF2B /* Aztec */ = {
+		3F367E512DEFA98E00976E47 /* Aztec */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Aztec;
 		};
-		3F37D8E42DEE8C9900D8BF2B /* WordPressEditor */ = {
+		3F367E532DEFA98E00976E47 /* WordPressEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WordPressEditor;
+		};
+		3F7C5ECA2DEEFB5F000951AA /* Aztec */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Aztec;
+		};
+		3F7C5ECC2DEEFB5F000951AA /* WordPressEditor */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WordPressEditor;
 		};
