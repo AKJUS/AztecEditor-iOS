@@ -2,6 +2,11 @@
 AllCops:
   NewCops: enable
 
+Metrics/BlockLength:
+  Exclude:
+    - 'WordPress-Aztec-iOS.podspec'
+    - 'WordPress-Editor-iOS.podspec'
+
 # Allow the Podspec filename to match the project
 Naming/FileName:
   Exclude:

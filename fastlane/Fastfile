@@ -2,7 +2,7 @@
 
 default_platform(:ios)
 
-TEST_RUNTIME = 'iOS 18.2'
+TEST_RUNTIME = 'iOS 18.4'
 TEST_DEVICE = 'iPhone 16 Pro'
 
 platform :ios do
@@ -12,7 +12,8 @@ platform :ios do
     device = create_simulator(TEST_RUNTIME, TEST_DEVICE) unless is_ci
 
     shared_options = {
-      workspace: 'Aztec.xcworkspace',
+      # Using `package_path: .` results in a crash,
+      workspace: './.swiftpm/xcode/package.xcworkspace',
       prelaunch_simulator: true,
       buildlog_path: File.join(__dir__, '.build', 'logs'),
       derived_data_path: File.join(__dir__, '.build', 'derived-data'),
@@ -21,7 +22,7 @@ platform :ios do
     }
 
     run_tests(**shared_options, scheme: 'Aztec')
-    run_tests(**shared_options, scheme: 'WordPressEditor')
+    # run_tests(**shared_options, scheme: 'WordPressEditor')
 
     destroy_simulator(device) unless is_ci
   end

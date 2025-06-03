@@ -62,6 +62,20 @@
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "HTMLParser"
+               BuildableName = "HTMLParser"
+               BlueprintName = "HTMLParser"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -88,6 +102,16 @@
                BlueprintIdentifier = "WordPressEditorTests"
                BuildableName = "WordPressEditorTests"
                BlueprintName = "WordPressEditorTests"
+               ReferencedContainer = "container:">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "HTMLParserTests"
+               BuildableName = "HTMLParserTests"
+               BlueprintName = "HTMLParserTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
