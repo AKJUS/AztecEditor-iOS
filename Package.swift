@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "WordPress-AztecEditor-iOS",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v12)],
     products: [
         .library(name: "Aztec", targets: ["Aztec"]),
         .library(name: "HTMLParser", targets: ["HTMLParser"]),
