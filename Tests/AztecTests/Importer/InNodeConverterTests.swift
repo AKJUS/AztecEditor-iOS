@@ -1,5 +1,6 @@
 import XCTest
 import libxml2
+// See comment in BoldElementToAttributeConverterTests.swift to understand the conditional import below.
 #if SWIFT_PACKAGE
 @testable import HTMLParser
 #else

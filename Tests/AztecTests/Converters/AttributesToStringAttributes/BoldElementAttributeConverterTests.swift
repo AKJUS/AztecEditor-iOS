@@ -1,5 +1,9 @@
 import XCTest
 @testable import Aztec
+// This test exercises sources from the Aztec target, but also uses internal APIs from HTMLParser.
+//
+// The HTMLParser target exists only when building for Swift package manager.
+// Otherwise, such as when building via CocoaPods, its sources are part of Aztec.
 #if SWIFT_PACKAGE
 @testable import HTMLParser
 #endif
