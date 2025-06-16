@@ -16,13 +16,13 @@ Pod::Spec.new do |s|
   s.license       = { type: 'MPLv2', file: 'LICENSE.md' }
   s.author        = { 'The WordPress Mobile Team' => 'mobile@wordpress.org' }
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '13.0'
   s.swift_version = '5.0'
 
   s.source        = { git: 'https://github.com/wordpress-mobile/AztecEditor-iOS.git', tag: s.version.to_s }
   s.module_name = 'WordPressEditor'
-  s.source_files = 'WordPressEditor/WordPressEditor/Classes/**/*'
-  s.resources = 'WordPressEditor/WordPressEditor/Assets/**/*'
+  s.source_files = 'Sources/WordPressEditor/Classes/**/*'
+  s.resources = 'Sources/WordPressEditor/Assets/**/*'
   s.xcconfig = {
     'OTHER_LDFLAGS' => '-lxml2',
     'HEADER_SEARCH_PATHS' => '/usr/include/libxml2'

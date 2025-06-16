@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "B60FC877-ADB8-4C48-B26F-F4F63AED1F77",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "HTMLParserTests",
+        "name" : "HTMLParserTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AztecTests",
+        "name" : "AztecTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "WordPressEditorTests",
+        "name" : "WordPressEditorTests"
+      }
+    }
+  ],
+  "version" : 1
+}

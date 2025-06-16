@@ -1,0 +1,102 @@
+import XCTest
+@testable import Aztec
+
+class UIImageResizeTests: XCTestCase {
+
+    let bundle = Bundle.aztecTestsBundle
+
+    func testResizingImageWorks() throws {
+        // See also:
+        // - https://github.com/wordpress-mobile/AztecEditor-iOS/pull/1233#issuecomment-553202740
+        // - https://github.com/wordpress-mobile/AztecEditor-iOS/pull/1235
+        try XCTSkipIf(true, "Testing image resizing has proven fiddly. Skipping for now.")
+
+        guard let image = UIImage(named: "aztec", in: bundle, compatibleWith: nil) else {
+            XCTFail()
+            return
+        }
+        
+        let rectSize = CGSize(width: 400, height: 400)
+        let maxImageSize = CGSize(width: 200, height: 200)
+        
+        let resizedImage = image.resizedImageWithinRect(rectSize: rectSize, maxImageSize: maxImageSize, color: UIColor.blue)
+        
+        guard let resizedPNGRepresentation = resizedImage.pngData() else {
+            XCTFail()
+            return
+        }
+        
+        let fileName: String = {
+            if UIScreen.main.scale == 3 {
+                return "UIImageResizeImage1_3x.png"
+            } else if UIScreen.main.scale == 2 {
+                return "UIImageResizeImage1_2x.png"
+            }
+            
+            // We no longer support 1x
+            fatalError()
+        }()
+        
+        guard let url = bundle.url(forResource: fileName, withExtension: "dat", subdirectory: nil),
+            let expectedPNGRepresentation = try? Data(contentsOf: url, options: []) else {
+                XCTFail()
+                return
+        }
+        
+        XCTAssertEqual(resizedPNGRepresentation, expectedPNGRepresentation)
+    }
+    
+    func testResizingImageWorks2() throws {
+        // See also:
+        // - https://github.com/wordpress-mobile/AztecEditor-iOS/pull/1233#issuecomment-553202740
+        // - https://github.com/wordpress-mobile/AztecEditor-iOS/pull/1235
+        try XCTSkipIf(true, "Testing image resizing has proven fiddly. Skipping for now.")
+
+        guard let image = UIImage(named: "aztec", in: bundle, compatibleWith: nil) else {
+            XCTFail()
+            return
+        }
+        
+        let rectSize = CGSize(width: 200, height: 400)
+        let maxImageSize = CGSize(width: 200, height: 400)
+        
+        let resizedImage = image.resizedImageWithinRect(rectSize: rectSize, maxImageSize: maxImageSize, color: UIColor.blue)
+        
+        guard let resizedPNGRepresentation = resizedImage.pngData() else {
+            XCTFail()
+            return
+        }
+        
+        let fileName: String = {
+            if UIScreen.main.scale == 3 {
+                return "UIImageResizeImage2_3x.png"
+            } else if UIScreen.main.scale == 2 {
+                return "UIImageResizeImage2_2x.png"
+            }
+            
+            // We no longer support 1x
+            fatalError()
+        }()
+        
+        guard let url = bundle.url(forResource: fileName, withExtension: "dat", subdirectory: nil),
+            let expectedPNGRepresentation = try? Data(contentsOf: url, options: []) else {
+                XCTFail()
+                return
+        }
+        
+        XCTAssertEqual(resizedPNGRepresentation, expectedPNGRepresentation)
+    }
+    
+    func testResizingImageWithoutSizeChangeReturnsSameImage() {
+
+        guard let image = UIImage(named: "aztec", in: .aztecTestsBundle, compatibleWith: nil) else {
+            XCTFail()
+            return
+        }
+        
+        let newSize = image.size
+        let resizedImage = image.resizedImage(newSize: newSize, color: UIColor.blue)
+        
+        XCTAssertEqual(image, resizedImage)
+    }
+}

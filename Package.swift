@@ -1,43 +1,37 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "WordPress-AztecEditor-iOS",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v13)],
     products: [
         .library(name: "Aztec", targets: ["Aztec"]),
+        .library(name: "HTMLParser", targets: ["HTMLParser"]),
         .library(name: "WordPressEditor", targets: ["WordPressEditor"]),
-    ],
-    dependencies: [
     ],
     targets: [
         .target(
             name: "Aztec",
-            dependencies: [
-            ],
-            path: "Aztec",
-            resources: [
-                .process("Assets"),
-            ]
+            dependencies: ["HTMLParser"],
+            resources: [.process("Assets")]
         ),
         .testTarget(
             name: "AztecTests",
             dependencies: ["Aztec"],
-            path: "AztecTests",
-            resources: [
-                .process("Resources"),
-            ]
+            resources: [.process("Resources")]
+        ),
+        .target(
+            name: "HTMLParser"
+        ),
+        .testTarget(
+            name: "HTMLParserTests",
+            dependencies: ["HTMLParser"]
         ),
         .target(
             name: "WordPressEditor",
-            dependencies: [
-                "Aztec",
-            ],
-            path: "WordPressEditor/WordPressEditor",
-            resources: [
-            ]
+            dependencies: ["Aztec"]
         ),
         .testTarget(
             name: "WordPressEditorTests",
@@ -45,7 +39,6 @@ let package = Package(
                 "Aztec",
                 "WordPressEditor",
             ],
-            path: "WordPressEditor/WordPressEditorTests",
             resources: [
                 .process("Resources"),
             ]
